@@ -1,10 +1,10 @@
-# jQuery Custom Select
+# jQuery Simple Slideshow
 
-jQuery Custom Select is a jQuery plugin to customize selects with CSS.
+
 
 ## More info
 
-[jQuery Custom Select - Matriz.it](http://www.matriz.it/projects/jquery-custom-select/ "Matriz | Projects | jQuery-Custom-Select")
+[jQuery Simple Slideshow - Matriz.it](http://www.matriz.it/projects/jquery-simple-slideshow/ "Matriz | Projects | jQuery-Simple-Slideshow")
 
 ## License
 
