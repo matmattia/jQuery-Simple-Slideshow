@@ -2,8 +2,8 @@
 * jQuery Simple Slideshow Select
 * @name jquery.slideshow.js
 * @author Mattia - http://www.matriz.it
-* @version 1.0.0
-* @date April 23, 2013
+* @version 1.1.0
+* @date May 24, 2013
 * @category jQuery plugin
 * @copyright (c) 2013 Mattia at Matriz.it (info@matriz.it)
 * @license MIT - http://opensource.org/licenses/mit-license.php
@@ -41,12 +41,21 @@
 				if (next.length == 0) {
 					next = t.find(opts.children_tag + ':first-child');
 				}
+				if ($.isFunction(opts.beforeChange)) {
+					opts.beforeChange.call(active, next);
+				}
 				active.addClass(opts.last_active_class);
 				next.css('opacity', 0).addClass(opts.active_class).animate({
 					'opacity': 1
 				}, opts.duration, function() {
-					active.removeClass(opts.active_class).removeClass(opts.last_active_class).css('opacity', 0);
+					active.removeClass(opts.active_class).removeClass(opts.last_active_class);
+					if ($.isFunction(opts.afterChange)) {
+						opts.afterChange.call(next, active);
+					}
 				});
+				active.animate({
+					'opacity': 0
+				}, opts.duration);
 			}
 		},
 		'getChildren': function(el, opts) {
@@ -71,7 +80,9 @@
 			'pause': 5000,
 			'children_tag': 'img',
 			'active_class': 'active',
-			'last_active_class': 'last-active'
+			'last_active_class': 'last-active',
+			'beforeChange': null,
+			'afterChange': null
 		}, options);
 		
 		return this.each(function() {
