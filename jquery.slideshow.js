@@ -1,5 +1,5 @@
 /**
-* jQuery Simple Slideshow Select
+* jQuery Simple Slideshow
 * @name jquery.slideshow.js
 * @author Mattia - http://www.matriz.it
 * @version 1.1.0
