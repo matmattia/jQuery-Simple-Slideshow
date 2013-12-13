@@ -2,8 +2,8 @@
 * jQuery Simple Slideshow
 * @name jquery.slideshow.js
 * @author Mattia - http://www.matriz.it
-* @version 1.1.0
-* @date May 24, 2013
+* @version 1.2.0
+* @date November 11, 2013
 * @category jQuery plugin
 * @copyright (c) 2013 Mattia at Matriz.it (info@matriz.it)
 * @license MIT - http://opensource.org/licenses/mit-license.php
@@ -23,11 +23,10 @@
 				children.css({
 					'position': 'absolute',
 					'top': 0,
-					'left': 0,
-					'opacity': 0
-				});
+					'left': 0
+				}).hide();
 				if (active.length > 0) {
-					active.css('opacity', 1);
+					active.show();
 				}
 			}
 		},
@@ -45,17 +44,13 @@
 					opts.beforeChange.call(active, next);
 				}
 				active.addClass(opts.last_active_class);
-				next.css('opacity', 0).addClass(opts.active_class).animate({
-					'opacity': 1
-				}, opts.duration, function() {
+				next.addClass(opts.active_class).fadeIn(opts.duration, function() {
 					active.removeClass(opts.active_class).removeClass(opts.last_active_class);
 					if ($.isFunction(opts.afterChange)) {
 						opts.afterChange.call(next, active);
 					}
 				});
-				active.animate({
-					'opacity': 0
-				}, opts.duration);
+				active.fadeOut(opts.duration);
 			}
 		},
 		'getChildren': function(el, opts) {
